@@ -15,14 +15,28 @@ End-to-end encrypted secret sync for developer teams. Stop Slacking your `.env`.
 
 ```mermaid
 flowchart LR
-    A["sotto CLI - native"] --> C["sotto-core - one Rust crypto core"]
-    B["Web client - same core via WASM"] --> C
-    C --> D["versioned encrypted data"]
-    D --> E["sync server - ciphertext only"]
+    subgraph devices["Devices - plaintext and keys stay here"]
+        direction TB
+        cli["sotto CLI - init, set, run, share"]
+        web["Browser vault - the same core via WASM"]
+        core["sotto-core - KDF, XChaCha20-Poly1305 envelopes, X25519 sealed-box grants, rotation"]
+        cli --> core
+        web --> core
+    end
+    subgraph server["Server and network - ciphertext it cannot read"]
+        direction TB
+        api["Sync API - versioned writes, per-member grants, rotation log"]
+        db[("Postgres - envelopes and grants")]
+        api <--> db
+    end
+    core -- "encrypted envelopes" --> api
+    core -- "sealed grants" --> api
+    core -- "one-time shares" --> api
+    style server stroke-dasharray: 5 5
 ```
 
-Plaintext secrets and usable keys never leave your devices. The server
-synchronises ciphertext it cannot read.
+Everything left of the dashed boundary holds keys and plaintext. Everything
+right of it only ever sees ciphertext - including the database if stolen.
 
 ## Pick your path
 
