@@ -27,7 +27,7 @@ flowchart LR
     end
     subgraph server["Server and network - ciphertext it cannot read"]
         direction TB
-        api["Sync API - versioned writes, per-member grants, rotation log"]
+        api["Sync API - versioned writes, per-member grants, audit log"]
         db[("Postgres - envelopes and grants")]
         api <--> db
     end
@@ -64,8 +64,8 @@ right of it only ever sees ciphertext - including the database if stolen.
 <summary>Security model in 30 seconds</summary>
 
 - Zero knowledge sync: the server sees ciphertext plus minimal metadata, never plaintext or usable keys.
-- Teams: organisations with roles, per-member environment grants, key rotation on member removal, machine tokens for CI, lost key recovery.
-- Honest limits: metadata exposure, pre transparency key directory, and the weaker assurance of the served browser client are all documented in [THREAT-MODEL.md](https://github.com/getsotto/sotto/blob/main/THREAT-MODEL.md).
+- Teams: organisations with roles, per-member environment grants, key rotation on member removal, machine tokens for CI, an audit log, and an account reset for a lost Emergency Kit.
+- Honest limits: metadata exposure, the server acting as the key directory until key transparency arrives, and the weaker assurance of the served browser client are all documented in [THREAT-MODEL.md](https://github.com/getsotto/sotto/blob/main/THREAT-MODEL.md).
 - Report vulnerabilities privately per [SECURITY.md](https://github.com/getsotto/sotto/blob/main/SECURITY.md), never as a public issue.
 
 </details>
