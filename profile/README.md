@@ -56,6 +56,9 @@ right of it only ever sees ciphertext - including the database if stolen.
 | --- | --- |
 | [sotto](https://github.com/getsotto/sotto) | CLI, sync server, web client, and the shared crypto core |
 | [sotto-action](https://github.com/getsotto/sotto-action) | Install the CLI in GitHub Actions |
+| [sotto-example](https://github.com/getsotto/sotto-example) | Try Sotto locally: one secret, eight languages, no account |
+| [homebrew-tap](https://github.com/getsotto/homebrew-tap) | Homebrew formula for the CLI on macOS (preview) |
+| [sotto-vscode](https://github.com/getsotto/sotto-vscode) | Run VS Code tasks through the CLI (preview, not yet on the Marketplace) |
 
 <details>
 <summary>Security model in 30 seconds</summary>
