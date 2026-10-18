@@ -75,7 +75,8 @@ right of it only ever sees ciphertext - including the database if stolen.
 
 1. Fork and clone [sotto](https://github.com/getsotto/sotto).
 2. Pick a [good first issue](https://github.com/getsotto/sotto/labels/good%20first%20issue) - docs and CLI help-text issues need no cryptography knowledge.
-3. Sign off every commit with `git commit -s` (Developer Certificate of Origin).
-4. Questions that are not bugs belong in [Discussions](https://github.com/getsotto/sotto/discussions).
+3. If you change the README, update its four translations in the same commit; CI checks that they stay in sync.
+4. Sign off every commit with `git commit -s` (Developer Certificate of Origin).
+5. Questions that are not bugs belong in [Discussions](https://github.com/getsotto/sotto/discussions).
 
 </details>
