@@ -7,6 +7,8 @@ End-to-end encrypted secret sync for developer teams. Stop Slacking your `.env`.
 ![Licence](https://img.shields.io/github/license/getsotto/sotto)
 [![Good first issues](https://img.shields.io/github/issues-search/getsotto/sotto?query=label%3A%22good%20first%20issue%22%20state%3Aopen&label=good%20first%20issues&color=7057ff)](https://github.com/getsotto/sotto/labels/good%20first%20issue)
 
+Website: [getsotto.co.uk](https://getsotto.co.uk) · Service status: [status.getsotto.co.uk](https://status.getsotto.co.uk)
+
 > [!WARNING]
 > Sotto is pre-1.0 and has not had a third-party cryptographic audit.
 > See [SECURITY.md](https://github.com/getsotto/sotto/blob/main/SECURITY.md).
