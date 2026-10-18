@@ -7,6 +7,8 @@ End-to-end encrypted secret sync for developer teams. Stop Slacking your `.env`.
 ![Licence](https://img.shields.io/github/license/getsotto/sotto)
 [![Good first issues](https://img.shields.io/github/issues-search/getsotto/sotto?query=label%3A%22good%20first%20issue%22%20state%3Aopen&label=good%20first%20issues&color=7057ff)](https://github.com/getsotto/sotto/labels/good%20first%20issue)
 
+Website: [getsotto.co.uk](https://getsotto.co.uk) · Service status: [status.getsotto.co.uk](https://status.getsotto.co.uk)
+
 > [!WARNING]
 > Sotto is pre-1.0 and has not had a third-party cryptographic audit.
 > See [SECURITY.md](https://github.com/getsotto/sotto/blob/main/SECURITY.md).
@@ -25,7 +27,7 @@ flowchart LR
     end
     subgraph server["Server and network - ciphertext it cannot read"]
         direction TB
-        api["Sync API - versioned writes, per-member grants, rotation log"]
+        api["Sync API - versioned writes, per-member grants, audit log"]
         db[("Postgres - envelopes and grants")]
         api <--> db
     end
@@ -42,9 +44,11 @@ right of it only ever sees ciphertext - including the database if stolen.
 
 | I want to… | Start here |
 | --- | --- |
-| Use Sotto | `curl -fsSL https://raw.githubusercontent.com/getsotto/sotto/main/install.sh \| sh`, then the [quick start](https://github.com/getsotto/sotto#quick-start) |
+| Try it on my machine | `curl -fsSL https://raw.githubusercontent.com/getsotto/sotto/main/install.sh \| sh` or [another install route](https://github.com/getsotto/sotto#install), then the [quick start](https://github.com/getsotto/sotto#quick-start). No account needed |
+| Sync with my team without running a server | Sotto Cloud at [getsotto.co.uk](https://getsotto.co.uk); `sotto login` uses it by default |
+| Run my own server | One-command deploy in [deploy/README.md](https://github.com/getsotto/sotto/blob/main/deploy/README.md) |
+| Use it in CI | [sotto-action](https://github.com/getsotto/sotto-action) and a machine token |
 | Contribute | [CONTRIBUTING.md](https://github.com/getsotto/sotto/blob/main/CONTRIBUTING.md), then a [good first issue](https://github.com/getsotto/sotto/labels/good%20first%20issue) |
-| Self-host | One-command deploy in [deploy/README.md](https://github.com/getsotto/sotto/blob/main/deploy/README.md) |
 
 ## Repositories
 
@@ -52,13 +56,16 @@ right of it only ever sees ciphertext - including the database if stolen.
 | --- | --- |
 | [sotto](https://github.com/getsotto/sotto) | CLI, sync server, web client, and the shared crypto core |
 | [sotto-action](https://github.com/getsotto/sotto-action) | Install the CLI in GitHub Actions |
+| [sotto-example](https://github.com/getsotto/sotto-example) | Try Sotto locally: one secret, eight languages, no account |
+| [homebrew-tap](https://github.com/getsotto/homebrew-tap) | Homebrew formula for the CLI on macOS (preview) |
+| [sotto-vscode](https://github.com/getsotto/sotto-vscode) | Run VS Code tasks through the CLI (preview, not yet on the Marketplace) |
 
 <details>
 <summary>Security model in 30 seconds</summary>
 
 - Zero knowledge sync: the server sees ciphertext plus minimal metadata, never plaintext or usable keys.
-- Teams: organisations with roles, per-member environment grants, key rotation on member removal, machine tokens for CI, lost key recovery.
-- Honest limits: metadata exposure, pre transparency key directory, and the weaker assurance of the served browser client are all documented in [THREAT-MODEL.md](https://github.com/getsotto/sotto/blob/main/THREAT-MODEL.md).
+- Teams: organisations with roles, per-member environment grants, key rotation on member removal, machine tokens for CI, an audit log, and an account reset for a lost Emergency Kit.
+- Honest limits: metadata exposure, the server acting as the key directory until key transparency arrives, and the weaker assurance of the served browser client are all documented in [THREAT-MODEL.md](https://github.com/getsotto/sotto/blob/main/THREAT-MODEL.md).
 - Report vulnerabilities privately per [SECURITY.md](https://github.com/getsotto/sotto/blob/main/SECURITY.md), never as a public issue.
 
 </details>
@@ -68,7 +75,8 @@ right of it only ever sees ciphertext - including the database if stolen.
 
 1. Fork and clone [sotto](https://github.com/getsotto/sotto).
 2. Pick a [good first issue](https://github.com/getsotto/sotto/labels/good%20first%20issue) - docs and CLI help-text issues need no cryptography knowledge.
-3. Sign off every commit with `git commit -s` (Developer Certificate of Origin).
-4. Questions that are not bugs belong in [Discussions](https://github.com/getsotto/sotto/discussions).
+3. If you change the README, update its four translations in the same commit; CI checks that they stay in sync.
+4. Sign off every commit with `git commit -s` (Developer Certificate of Origin).
+5. Questions that are not bugs belong in [Discussions](https://github.com/getsotto/sotto/discussions).
 
 </details>
