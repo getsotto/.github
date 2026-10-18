@@ -44,9 +44,11 @@ right of it only ever sees ciphertext - including the database if stolen.
 
 | I want to… | Start here |
 | --- | --- |
-| Use Sotto | `curl -fsSL https://raw.githubusercontent.com/getsotto/sotto/main/install.sh \| sh`, then the [quick start](https://github.com/getsotto/sotto#quick-start) |
+| Try it on my machine | `curl -fsSL https://raw.githubusercontent.com/getsotto/sotto/main/install.sh \| sh` or [another install route](https://github.com/getsotto/sotto#install), then the [quick start](https://github.com/getsotto/sotto#quick-start). No account needed |
+| Sync with my team without running a server | Sotto Cloud at [getsotto.co.uk](https://getsotto.co.uk); `sotto login` uses it by default |
+| Run my own server | One-command deploy in [deploy/README.md](https://github.com/getsotto/sotto/blob/main/deploy/README.md) |
+| Use it in CI | [sotto-action](https://github.com/getsotto/sotto-action) and a machine token |
 | Contribute | [CONTRIBUTING.md](https://github.com/getsotto/sotto/blob/main/CONTRIBUTING.md), then a [good first issue](https://github.com/getsotto/sotto/labels/good%20first%20issue) |
-| Self-host | One-command deploy in [deploy/README.md](https://github.com/getsotto/sotto/blob/main/deploy/README.md) |
 
 ## Repositories
 
