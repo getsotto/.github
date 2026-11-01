@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://getsotto.co.uk">
+    <img src="https://raw.githubusercontent.com/getsotto/sotto/main/web/brand/org-avatar-dark.png" width="160" alt="Sotto logo" />
+  </a>
+</p>
+
 # Sotto
 
 End-to-end encrypted secret sync for developer teams. Stop Slacking your `.env`.
